@@ -1,0 +1,249 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "API Banco Demo",
+      "description": "Esta API fornece recursos para gerenciar contas bancárias, realizar depósitos, saques e transferências.",
+      "version": "1.0.0"
+    },
+    "basePath": "/",
+    "paths": {
+      "/contas/{numero_conta}": {
+        "get": {
+          "summary": "Obter Conta Bancária",
+          "description": "Recupera os dados de uma conta bancária específica.",
+          "parameters": [
+            {
+              "name": "numero_conta",
+              "in": "path",
+              "description": "O número da conta bancária.",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Conta bancária encontrada.",
+              "schema": {
+                "$ref": "#/definitions/ContaBancaria"
+              }
+            },
+            "404": {
+              "description": "Conta bancária não encontrada."
+            }
+          }
+        },
+        "put": {
+          "summary": "Atualizar Conta Bancária",
+          "description": "Atualiza os dados de uma conta bancária específica.",
+          "parameters": [
+            {
+              "name": "numero_conta",
+              "in": "path",
+              "description": "O número da conta bancária.",
+              "required": true,
+              "type": "integer"
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "description": "Os dados atualizados da conta bancária.",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/ContaBancaria"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Conta bancária atualizada com sucesso.",
+              "schema": {
+                "$ref": "#/definitions/ContaBancaria"
+              }
+            },
+            "400": {
+              "description": "Dados inválidos."
+            },
+            "404": {
+              "description": "Conta bancária não encontrada."
+            }
+          }
+        },
+        "delete": {
+          "summary": "Excluir Conta Bancária",
+          "description": "Exclui uma conta bancária específica.",
+          "parameters": [
+            {
+              "name": "numero_conta",
+              "in": "path",
+              "description": "O número da conta bancária.",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Conta bancária excluída com sucesso."
+            },
+            "404": {
+              "description": "Conta bancária não encontrada."
+            }
+          }
+        }
+      },
+      "/contas/{numero_conta}/depositos": {
+        "post": {
+          "summary": "Realizar Depósito",
+          "description": "Realiza um depósito em uma conta bancária específica.",
+          "parameters": [
+            {
+              "name": "numero_conta",
+              "in": "path",
+              "description": "O número da conta bancária.",
+              "required": true,
+              "type": "integer"
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "description": "Os dados do depósito.",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "valor": {
+                    "type": "number",
+                    "description": "O valor a ser depositado."
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Depósito realizado com sucesso.",
+              "schema": {
+                "$ref": "#/definitions/ContaBancaria"
+              }
+            },
+            "400": {
+              "description": "Dados inválidos."
+            },
+            "404": {
+              "description": "Conta bancária não encontrada."
+            }
+          }
+        }
+      },
+      "/contas/{numero_conta}/saques": {
+        "post": {
+          "summary": "Realizar Saque",
+          "description": "Realiza um saque em uma conta bancária específica.",
+          "parameters": [
+            {
+              "name": "numero_conta",
+              "in": "path",
+              "description": "O número da conta bancária.",
+              "required": true,
+              "type": "integer"
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "description": "Os dados do saque.",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "valor": {
+                    "type": "number",
+                    "description": "O valor a ser sacado."
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Saque realizado com sucesso.",
+              "schema": {
+                "$ref": "#/definitions/ContaBancaria"
+              }
+            },
+            "400": {
+              "description": "Dados inválidos."
+            },
+            "404": {
+              "description": "Conta bancária não encontrada."
+            },
+            "409": {
+              "description": "Saldo insuficiente."
+            }
+          }
+        }
+      },
+      "/transferencias": {
+        "post": {
+          "summary": "Realizar Transferência",
+          "description": "Realiza uma transferência entre duas contas bancárias.",
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "description": "Os dados da transferência.",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "numero_conta_origem": {
+                    "type": "integer",
+                    "description": "O número da conta bancária de origem."
+                  },
+                  "numero_conta_destino": {
+                    "type": "integer",
+                    "description": "O número da conta bancária de destino."
+                  },
+                  "valor": {
+                    "type": "number",
+                    "description": "O valor a ser transferido."
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Transferência realizada com sucesso.",
+              "schema": {
+                "$ref": "#/definitions/ContaBancaria"
+              }
+            },
+            "400": {
+              "description": "Dados inválidos."
+            },
+            "404": {
+              "description": "Conta bancária de origem ou destino não encontrada."
+            },
+            "409": {
+              "description": "Saldo insuficiente na conta bancária de origem."
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "ContaBancaria": {
+        "type": "object",
+        "properties": {
+          "numero_conta": {
+            "type": "integer",
+            "description": "O número da conta bancária."
+          },
+          "saldo": {
+            "type": "number",
+            "description": "O saldo da conta bancária."
+          }
+        }
+      }
+    }
+  }
+  
