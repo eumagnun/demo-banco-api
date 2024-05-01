@@ -230,7 +230,7 @@ api.add_resource(Transferencia, '/transferencias')
 
 swaggerui_blueprint = get_swaggerui_blueprint(
     '/docs',
-    '/static/swagger.json',
+    '/static/oas.yaml',
     config={
         'app_name': 'API Banco Demo'
     }
