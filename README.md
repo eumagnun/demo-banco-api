@@ -1,4 +1,4 @@
-# Rode essa API via docker em qualquer plataforma, uma opção simples e gratuita é o  Play With Docker
+# Rode essa API via docker em qualquer plataforma. Uma opção simples e gratuita é roda-la via Play With Docker através da imagem publicada no Dockerhub
 > [!NOTE]
 > ## Passo 1: 
 > * Acesse https://labs.play-with-docker.com/ e crie uma instância
