@@ -8,4 +8,4 @@
 >   docker run -it -p 8080:8080 eumagnun/banco-demo-api:latest
 > ```
 > * A OAS (Open API Specification) estará disponivel na url exibida, no path /docs. COnforme exemplo abaixo:
-> * http://ip172-18-0-20-cop6tva91nsg00e5jtng-8080.direct.labs.play-with-docker.com/docs
+> * http://url-gerada-para-sua-instancia-do-palywithdocker/docs
