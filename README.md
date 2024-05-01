@@ -9,3 +9,6 @@
 > ```
 > * A OAS (Open API Specification) estará disponivel na url exibida, no path /docs. COnforme exemplo abaixo:
 > * http://url-gerada-para-sua-instancia-do-palywithdocker/docs
+## Visão da OAS
+
+![Visão da OAS](https://raw.githubusercontent.com/eumagnun/demo-banco-api/main/oas-api-demo-banco.JPG)
