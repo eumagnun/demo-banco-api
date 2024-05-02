@@ -18,7 +18,7 @@ paths:
         description: O número da conta bancária.
         required: true
         schema:
-          type: integer
+          type: string
       responses:
         "200":
           description: Conta bancária encontrada.
@@ -38,7 +38,7 @@ paths:
         description: O número da conta bancária.
         required: true
         schema:
-          type: integer
+          type: string
       requestBody:
         description: Os dados atualizados da conta bancária.
         content:
@@ -68,7 +68,7 @@ paths:
         description: O número da conta bancária.
         required: true
         schema:
-          type: integer
+          type: string
       responses:
         "200":
           description: Conta bancária excluída com sucesso.
@@ -85,7 +85,7 @@ paths:
         description: O número da conta bancária.
         required: true
         schema:
-          type: integer
+          type: string
       requestBody:
         description: Os dados do depósito.
         content:
@@ -94,7 +94,7 @@ paths:
               type: object
               properties:
                 valor:
-                  type: number
+                  type: string
                   description: O valor a ser depositado.
         required: true
       responses:
@@ -120,7 +120,7 @@ paths:
         description: O número da conta bancária.
         required: true
         schema:
-          type: integer
+          type: string
       requestBody:
         description: Os dados do saque.
         content:
@@ -129,7 +129,7 @@ paths:
               type: object
               properties:
                 valor:
-                  type: number
+                  type: string
                   description: O valor a ser sacado.
         required: true
       responses:
@@ -159,13 +159,13 @@ paths:
               type: object
               properties:
                 numero_conta_origem:
-                  type: integer
+                  type: string
                   description: O número da conta bancária de origem.
                 numero_conta_destino:
-                  type: integer
+                  type: string
                   description: O número da conta bancária de destino.
                 valor:
-                  type: number
+                  type: string
                   description: O valor a ser transferido.
         required: true
       responses:
@@ -188,8 +188,8 @@ components:
       type: object
       properties:
         numero_conta:
-          type: integer
+          type: string
           description: O número da conta bancária.
         saldo:
-          type: number
+          type: string
           description: O saldo da conta bancária.
